@@ -1,5 +1,5 @@
 use iced::widget::{self, button, column, keyed_column, row, container, stack, opaque, mouse_area, center};
-use iced::{Element, Task, Color};
+use iced::{Color, Element, Task, Theme};
 use iced::alignment::Horizontal::Center;
 
 const COEFF_DIFF_FEMME: f32 = 0.6;
@@ -92,7 +92,7 @@ impl App {
                         ).padding(5),
                         container(
                             button("Annuler").padding(5).on_press(Message::Reset)
-                        ).padding(5)                     
+                        ).padding(5)
                     ]
                 )
             ].align_x(Center)
@@ -297,5 +297,8 @@ where
 }
 
 fn main() -> iced::Result {
-    iced::application("calcul taux alcool", App::update, App::view).window_size((500.0, 800.0)).run()
+    iced::application("calcul taux alcool", App::update, App::view)
+    .theme(|_| Theme::Dark)
+    .window_size((500.0, 800.0))
+    .run()
 }
